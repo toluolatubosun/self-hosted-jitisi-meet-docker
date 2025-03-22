@@ -4,7 +4,7 @@ This is a simple guide to self-host Jitsi Meet and Excalidraw using Docker. This
 
 It uses Jitsi Meet `stable-10133` and the latest Excalidraw Docker image.
 
-For configuring Jitsi Meet, you can refer to the official Jitsi Meet handbook. I mounted the web configuration files because some configurations set in the `.env` file are not working.
+For configuring Jitsi Meet, you can refer to the official Jitsi Meet handbook. I mounted the web configuration files because some configurations set in the `.env` file are not working, and some configurations are not available in the `.env` file.
 
 ## Prerequisites
 

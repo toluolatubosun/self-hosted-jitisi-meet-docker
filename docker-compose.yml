@@ -14,20 +14,15 @@ services:
     #   - "80:80"
     #   - "443:443"
     environment:
-      - PUBLIC_URL=https://jitsi.toluolatubosun.com
-      - ENABLE_XMPP_WEBSOCKET=1
-      - ENABLE_LOBBY=0
       - ENABLE_AUTH=0
       - ENABLE_GUESTS=1
-      - LOGO_URL=https://toluolatubosun.com/images/logo.png
-      - BRANDING_NAME="King Meet"
-      - XMPP_SERVER=prosody
       - DEFAULT_LANGUAGE=en-US
-      - LANG_DETECTION=false
+      - ENABLE_XMPP_WEBSOCKET=1
+      - PUBLIC_URL=https://jitsi.toluolatubosun.com
     volumes:
-      - ./config.js:/config/config.js:ro  # Mount the custom config
-      - ./nginx.conf:/config/nginx/meet.conf:ro  # Mount the custom Nginx config
-      - ./interface_config.js:/config/interface_config.js:ro # Mount the custom interface config
+      - ./web/config.js:/config/config.js:ro  # Mount the custom config
+      - ./web/nginx.conf:/config/nginx/meet.conf:ro  # Mount the custom Nginx config
+      - ./web/interface_config.js:/config/interface_config.js:ro # Mount the custom interface config
     networks:
       - jitsi
 
@@ -42,12 +37,10 @@ services:
       - ENABLE_AUTH=0
       - ENABLE_LOBBY=0
       - ENABLE_GUESTS=1
-      - JICOFO_AUTH_USER=focus
-      - JICOFO_AUTH_PASSWORD=RandomPassword1
       - JVB_AUTH_USER=jvb
-      - JVB_AUTH_PASSWORD=RandomPassword2
       - ENABLE_XMPP_WEBSOCKET=1
-      - ENABLE_XMPP_SMACKS=1
+      - JVB_AUTH_PASSWORD=RandomPassword2
+      - JICOFO_AUTH_PASSWORD=RandomPassword1
     networks:
       - jitsi
 
@@ -57,10 +50,8 @@ services:
     restart: always
     environment:
       - ENABLE_AUTH=0
-      - ENABLE_LOBBY=0
-      - JICOFO_AUTH_USER=focus
-      - JICOFO_AUTH_PASSWORD=RandomPassword1
       - XMPP_SERVER=prosody
+      - JICOFO_AUTH_PASSWORD=RandomPassword1
     networks:
       - jitsi
 
@@ -71,9 +62,9 @@ services:
     ports:
       - "10000:10000/udp"
     environment:
-      - JVB_STUN_SERVERS=stun.l.google.com:19302
-      - XMPP_SERVER=prosody
       - JVB_AUTH_USER=jvb
+      - XMPP_SERVER=prosody
+      - JVB_STUN_SERVERS=stun.l.google.com:19302
       - JVB_AUTH_PASSWORD=RandomPassword2
     networks:
       - jitsi
