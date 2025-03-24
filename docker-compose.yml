@@ -16,6 +16,8 @@ services:
     environment:
       - ENABLE_AUTH=0
       - ENABLE_GUESTS=1
+      # - ENABLE_AUTH=1 # Used for JWT Auth
+      # - ENABLE_GUESTS=0 # Used for JWT Auth
       - DEFAULT_LANGUAGE=en-US
       - ENABLE_XMPP_WEBSOCKET=1
       - PUBLIC_URL=https://jitsi.toluolatubosun.com
@@ -35,9 +37,14 @@ services:
       - "5281:5281"
     environment:
       - ENABLE_AUTH=0
-      - ENABLE_LOBBY=0
       - ENABLE_GUESTS=1
+      # - ENABLE_AUTH=1 # Used for JWT Auth
+      # - ENABLE_GUESTS=0 # Used for JWT Auth
       - JVB_AUTH_USER=jvb
+      # - AUTH_TYPE=jwt # Used for JWT Auth
+      # - JWT_AUTH_TYPE=token # Used for JWT Auth
+      # - JWT_APP_ID=jitsi_toluolatubosun_app # Used for JWT Auth
+      # - JWT_APP_SECRET=RandomSecret1 # Used for JWT Auth
       - ENABLE_XMPP_WEBSOCKET=1
       - JVB_AUTH_PASSWORD=RandomPassword2
       - JICOFO_AUTH_PASSWORD=RandomPassword1
@@ -50,6 +57,8 @@ services:
     restart: always
     environment:
       - ENABLE_AUTH=0
+      # - ENABLE_AUTH=1 # Used for JWT Auth
+      # - AUTH_TYPE=jwt # Used for JWT Auth
       - XMPP_SERVER=prosody
       - JICOFO_AUTH_PASSWORD=RandomPassword1
     networks:
@@ -62,6 +71,9 @@ services:
     ports:
       - "10000:10000/udp"
     environment:
+      - ENABLE_AUTH=0
+      # - ENABLE_AUTH=1 # Used for JWT Auth
+      # - AUTH_TYPE=jwt # Used for JWT Auth
       - JVB_AUTH_USER=jvb
       - XMPP_SERVER=prosody
       - JVB_STUN_SERVERS=stun.l.google.com:19302

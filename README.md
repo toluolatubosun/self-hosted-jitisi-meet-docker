@@ -35,3 +35,23 @@ cd self-hosted-jitisi-meet-docker
 ```bash
 docker-compose up -d
 ```
+
+## Authentication
+
+To add authentication to your Jitsi Meet instance, you can make use of JWT tokens, to authenticate users, and pass that when joining a room. Sample payload:
+
+```json
+{
+  "context": {
+    "user": {
+      "avatar": "https://robohash.org/john-doe",
+      "name": "John Doe",
+      "email": "jdoe@example.com"
+    }
+  },
+  "aud": "jitsi_toluolatubsun_com",
+  "iss": "jitsi_toluolatubsun_com",
+  "sub": "jitsi.toluolatubsun.com", // This should be the same as your public domain
+  "room": "*"
+}
+```
